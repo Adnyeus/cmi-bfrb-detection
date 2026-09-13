@@ -10,7 +10,7 @@
 
 This project tackles the Child Mind Institute (CMI) - Detect Behavior with Sensor Data Kaggle competition, a multimodal time-series classification task in the domain of mental health wearables.
 
-**The goal:** Classify wrist-worn sensor data into 18 gesture classes**, distinguishing Body-Focused Repetitive Behaviors (BFRBs), such as hair pulling, skin pinching, and scratching, from everyday non-BFRB gestures. Early detection of BFRBs is clinically valuable for diagnosing and treating conditions like trichotillomania and excoriation disorder.
+**The goal:** Classify wrist-worn sensor data into 18 gesture classes, distinguishing Body-Focused Repetitive Behaviors (BFRBs), such as hair pulling, skin pinching, and scratching, from everyday non-BFRB gestures. Early detection of BFRBs is clinically valuable for diagnosing and treating conditions like trichotillomania and excoriation disorder.
 
 The data comes from the Helios device, which contains three sensor modalities:
 - **IMU (7 channels):** 3-axis accelerometer + 4-channel orientation quaternion
@@ -25,7 +25,7 @@ The data comes from the Helios device, which contains three sensor modalities:
 | CNN + Bi-LSTM (raw time-series) | 0.6142 | 0.9252 | 0.3032 |
 | **Blend (0.6 × XGB + 0.4 × CNN)** | **0.7066** 🏆 | 0.9517 | 0.4615 |
 
-**Evaluation metric:** `0.5 × Binary F1 + 0.5 × Macro F1 over 8 BFRB classes`, computed via **subject-wise GroupKFold cross-validation** (81 subjects, no subject leakage).
+**Evaluation metric:** `0.5 × Binary F1 + 0.5 × Macro F1 over 8 BFRB classes`, computed via subject-wise GroupKFold cross-validation (81 subjects, no subject leakage).
 
 ---
 
@@ -33,7 +33,7 @@ The data comes from the Helios device, which contains three sensor modalities:
 
 > With only 81 subjects in the training set, a gradient-boosted tree on engineered statistical features outperformed a deep learning model on raw time-series (+0.086 score). However, the two models made complementary errors, and blending them yielded the best overall result.
 
-This is a real-world ML lesson. Model complexity must be matched to data availability. Deep learning is powerful, but it needs diversity — and 81 subjects is not enough to learn robust temporal patterns from scratch. Feature engineering still wins when data is limited.
+This is a real-world ML lesson. Model complexity must be matched to data availability. Deep learning is powerful, but it needs diversity and 81 subjects is not enough to learn robust temporal patterns from scratch. Feature engineering still wins when data is limited.
 
 ---
 
